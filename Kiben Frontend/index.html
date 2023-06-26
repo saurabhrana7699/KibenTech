@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="main">
+         <div class="form">
+
+            <div class="emp__name">
+                <input type="text" placeholder="Enter Your Name" id="name">
+
+            </div>
+            <div class="emp__Number">
+                <input type="text" placeholder="Enter Your Contact Number" id="Number">
+
+            </div>
+
+            <div class="emp__Mail">
+                <input type="text" placeholder="Enter Your Mail ID" id="Mail">
+
+            </div>
+            <div class="emp__Address">
+               <textarea name="" id="address" cols="30" rows="10 " placeholder="Enter Your Address" ></textarea>
+
+            </div>
+
+
+            <div class="emp__grad">
+              <select name="" id="graduation"> <option value=" MCA "> MCA</option>
+                <option value=" B. Tech ">  B. Tech</option>
+                <option value="B. Sc. (cs)">B. Sc. (cs)</option>
+                <option value="M. Tech"> M. Tech</option>
+              </select>
+ 
+             </div>
+
+             <div class="emp__EXP">
+                <input type="number" placeholder="Enter Your Experience" id="exp">
+
+
+            </div>
+<div id="submit"> <button id="btn"> Submit</button></div>
+           
+         </div>
+    </div>
+</body>
+</html>
+
+<script>
+document.getElementById("btn").addEventListener("click", () =>{
+    addData()
+})
+
+
+
+
+let addData =  async() =>{
+
+ 
+    let data ={
+
+        employeName: document.getElementById("name").value,
+        contactNumber: document.getElementById("Number").value,
+        emailId: document.getElementById("Mail").value,
+        address: document.getElementById("address").value,
+        education: document.getElementById("graduation").value,
+        totalYearExp:document.getElementById("exp").value
+  
+        
+
+    }
+ 
+    // console.log(data);
+
+    let url= `http://localhost:8888/RegEmployee`;
+    
+    let res = await fetch(url,{
+        method : "POST",
+        body : JSON.stringify(data),
+        headers : {
+            "Content-Type" : "application/json"
+        },
+    });
+
+alert("Task Added Sucessfully");
+// window.location.href='addTask.html';
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+</script>
